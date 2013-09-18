@@ -1,6 +1,6 @@
 .rake_test_cache
 .vagrant
-
+.DS_Store
 ###
 # Ignore Chef key files and secrets
 ###
