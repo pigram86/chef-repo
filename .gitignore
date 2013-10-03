@@ -1,7 +1,8 @@
 # Chef
 .chef/*.pem
-.chef/*.rb
+.chef/knife.rb
 .chef/encrypted_data_bag_secret
+.berkshelf/*.*
 
 # Ruby
 .rake_test_cache
