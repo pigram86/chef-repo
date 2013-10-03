@@ -17,35 +17,9 @@
 # limitations under the License.
 #
 
-# Installs base roles and features for w2k8r2
 
-# enable FS-Fileserver
-windows_feature "FS-Fileserver" do
-  action :Install
-end
 
-# enable Backup
-windows_feature "Backup" do
-  action :Install
-end
 
-# enable Backup-Tools
-windows_feature "Backup-Tools" do
-  action :Install
-end
 
-# enable Net-Framework-Core
-windows_feature "Net-Framework-Core" do
-  action :Install
-end
 
-# enable Powershell-ISE
-windows_feature "Powershell-ISE" do
-  action :Install
-end
-
-# enable WSRM
-windows_feature "WSRM" do
-  action :Install
-end
 
