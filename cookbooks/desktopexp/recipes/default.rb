@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: xenapp
-# Recipe:: RDSH
+# Cookbook Name:: desktopexp
+# Recipe:: default
 #
 # Copyright 2013, Todd Pigram
 #
@@ -16,8 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# Install RDSH host for XenApp install 
-windows_feature "RDS-RD-Server" do
-  action :install
+# Install desktop experience
+powershell "desktop_experience" do
+  code <<-EOH
+  Import-Module ServerManager
+  Add-WindowsFeature Desktop-Experience
+  EOH
 end

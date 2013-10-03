@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: xenapp
-# Recipe:: desktop_experience
+# Cookbook Name:: RDS
+# Recipe:: default
 #
 # Copyright 2013, Todd Pigram
 #
@@ -16,10 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-
-
-# Install Desktop-Experience
-windows_feature "Desktop-Experience" do
-  action :install
+# Install RDS
+powershell "RDS" do
+  code <<-EOH
+  Import-Module ServerManager
+  Add-WindowsFeature RDS-RD-Server
+  EOH
 end
