@@ -16,10 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  action :nothing
+end 
+
 # Install RDS
 powershell "RDS" do
   code <<-EOH
   Import-Module ServerManager
   Add-WindowsFeature RDS-RD-Server
   EOH
+  notifies :request, 'windows_reboot[60]'
 end
