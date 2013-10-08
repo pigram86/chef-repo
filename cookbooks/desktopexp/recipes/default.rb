@@ -31,7 +31,3 @@ powershell "desktop_experience" do
   notifies :request, 'windows_reboot[60]'
 end
 
-# cancel the previously requested reboot
-windows_reboot 60 do
-  action :cancel
-end
