@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: RDS
+# Cookbook Name:: rdsreg  
 # Recipe:: default
 #
 # Copyright 2013, Todd Pigram, LLC
