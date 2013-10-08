@@ -29,30 +29,6 @@ windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota Sy
   type :dword
 end
 
-# delete run 1
-windows_registry 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' do
-  values  => ' '
-  action :remove
-end
-
-# delete runonce
-windows_registry 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce' do
-  values => ' '
-  action :remove
-end
-
-# delete x64 run 
-windows_registry 'HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run' do
-  values => ' '
-  action :remove
-end
-
-# delete x64 runonce
-windows_registry 'HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\RunOnce' do
-  values => ' ' 
-  action :remove
-end
-
 # set errormode
 windows_registry 'HKLM\System\CurrentControlSet\Control\Windows' do
   values 'ErrorMode' => 00000002
@@ -96,23 +72,13 @@ end
 
 # set Max Parameters
 windows_registry 'HKLM\SYSTEM\CurrentControlSet\Services\Lanmanserver\Parameters' do
-  values 'MaxWorkItems' => 00002000
-  type :dword
-  values 'MaxMpxCt' => 00000800
-  type :dword
-  values 'MaxRawWorkItems' => 00000200
-  type :dword
-  values 'MaxFreeConnections' => 00000064
-  type :dword
-  values 'MinFreeConnections' => 00000020
+  values 'MaxWorkItems' => 00002000, 'MaxMpxCt' => 00000800, 'MaxRawWorkItems' => 00000200, 'MaxFreeConnections' => 00000064, 'MinFreeConnections' => 00000020
   type :dword
 end
 
 # Set Parameters
 windows_registry 'HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters' do
-  values 'DisableBandwidthThrottling' => 00000001
-  type :dword
-  values 'DisableLargeMtu' => 00000000
+  values 'DisableBandwidthThrottling' => 00000001, 'DisableLargeMtu' => 00000000
   type :dword
 end
 
