@@ -72,7 +72,7 @@ end
 
 # set Max Parameters
 windows_registry 'HKLM\SYSTEM\CurrentControlSet\Services\Lanmanserver\Parameters' do
-  values 'MaxWorkItems' => 00002000, 'MaxMpxCt' => 00000800, 'MaxRawWorkItems' => 00000200, 'MaxFreeConnections' => 00000064, 'MinFreeConnections' => 00000020
+  values 'MaxWorkItems' => 00002000, 'MaxMpxCt' => 800, 'MaxRawWorkItems' => 00000200, 'MaxFreeConnections' => 00000064, 'MinFreeConnections' => 00000020
   type :dword
 end
 
