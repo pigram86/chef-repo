@@ -19,5 +19,6 @@
 
 # install flash plugin
 windows_package "flash Plugin" do
-  source "http://ghhub01/repo/install_flash_player_11_plugin.msi"
+  source "http://ghhub01.mcpc.com/repo/install_flash_player_11_plugin.msi"
+  action :install
 end

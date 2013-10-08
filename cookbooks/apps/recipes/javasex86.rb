@@ -18,6 +18,6 @@
 #
 # Instal javase
 windows_Package "jre-7u40-windows-i586" do
-  source "http://ghhub01/repo/jre-7u40-windows-i586.exe"
+  source "http://ghhub01.mcpc.com/repo/jre-7u40-windows-i586.exe"
   action :install
 end

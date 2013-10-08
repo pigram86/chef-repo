@@ -18,6 +18,6 @@
 #
 # Instal javase
 windows_Package "jre-7u40-windows-x64" do
-  source "http://ghhub01/repo/jre-7u40-windows-x64.exe"
+  source "http://ghhub01mcpc.com/repo/jre-7u40-windows-x64.exe"
   action :install
 end

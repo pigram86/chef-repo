@@ -19,6 +19,6 @@
 
 # Install flash player for internet explorer
 windows_package "Flash_Player_activex" do
-  source "http://ghhub01/repo/install_flash_player_11_active_x.msi"
+  source "http://ghhub01.mcpc.com/repo/install_flash_player_11_active_x.msi"
   action :install
 end
