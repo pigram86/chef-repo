@@ -18,6 +18,6 @@
 #
 # install office x64 
 windows_package "Office 2013 Pro Plus x64" do
-  source "\\ghhub01.mcpc.com\\repo\\SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297\\setup.exe"
+  source "//ghhub01.mcpc.com/repo/SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297/setup.exe"
   action :install
 end
