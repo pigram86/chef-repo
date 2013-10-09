@@ -18,10 +18,10 @@
 #
 
 # if feature installs, schedule a reboot at end of chef run
-#windows_reboot 60 do
- # reason 'cause chef said so'
-  #action :nothing
-#end 
+windows_reboot 60 do
+  reason 'cause chef said so'
+  action :nothing
+end 
 
 # Install RDS
 powershell "RDS" do
@@ -29,6 +29,6 @@ powershell "RDS" do
   Import-Module ServerManager
   Add-WindowsFeature RDS-RD-Server
   EOH
-  #notifies :request, 'windows_reboot[60]'
+  notifies :request, 'windows_reboot[60]'
 end
 

@@ -20,6 +20,6 @@
 powershell "XPS-Viewer" do
   code <<-EOH
   Import-Module ServerManager
-  Add-WindowsFaeture XPS-Viewer
+  Add-WindowsFeature XPS-Viewer
   EOH
 end
