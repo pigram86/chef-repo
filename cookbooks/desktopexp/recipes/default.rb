@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 # if feature installs, schedule a reboot
-windows_reboot 60 do
-  reason 'cause chef said so'
-  action :nothing
- end 
+#windows_reboot 60 do
+ # reason 'cause chef said so'
+  #action :nothing
+ #end 
 
 # Install desktop experience
 powershell "desktop_experience" do
@@ -28,6 +28,6 @@ powershell "desktop_experience" do
   Import-Module ServerManager
   Add-WindowsFeature Desktop-Experience
   EOH
-  notifies :request, 'windows_reboot[60]'
+  #notifies :request, 'windows_reboot[60]'
 end
 
