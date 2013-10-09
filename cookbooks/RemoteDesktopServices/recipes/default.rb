@@ -1,9 +1,8 @@
 #
-# Cookbook Name:: deskexp
+# Cookbook Name:: RemoteDesktopServices
 # Recipe:: default
 #
 # Copyright 2013, Todd Pigram, LLC
-#
 #
 
 windows_reboot 60 do
@@ -12,7 +11,11 @@ windows_reboot 60 do
 end 
 
 
-windows_feature "DesktopExperience" do
+windows_feature "Remote-Desktop-Services" do
+  action :install
+end
+  
+windows_feature "AppServer" do
   action :install
   notifies :request, 'windows_reboot[60]'
 end

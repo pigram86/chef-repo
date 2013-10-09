@@ -6,6 +6,10 @@
 #
 
 # install default roles w/dism
+windows_feature "File-Services" do
+  action :install
+end
+
 windows_feature "CoreFileServer" do
   action :install
 end 
@@ -14,15 +18,15 @@ windows_feature "WindowsServerBackup" do
   action :install
 end
 
-windows_feature "WindowsServerBackupCommandlet" do
-  action :install
-end
-
 windows_feature "WSRM" do
   action :install
 end
 
-windows_feature "NetFx3" do
+windows_feature "NetFx3ServerFeatures" do
   action :install
 end
+
+#windows_feature "NetFx3" do
+  #action :install
+#end
 
