@@ -19,7 +19,7 @@
 
 # disable ipv6
 windows_registry 'HKLM\SYSTEM\CurrentContolSet\Services\Tcpip6\Parameters' do
-  values 'DisableComponents' => ffffffff  
+  values 'DisableComponents' => 'ffffffff'  
   type :dword
 end
 
@@ -27,6 +27,7 @@ end
 windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
   value 'EnableCpuQuota' => 00000000
   type :dword
+  action :force_modify
 end
 
 # set errormode
