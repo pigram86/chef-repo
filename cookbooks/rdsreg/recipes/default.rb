@@ -24,15 +24,10 @@ windows_registry 'HKLM\SYSTEM\CurrentContolSet\Services\Tcpip6\Parameters' do
 end
 
 # disable dfss
-windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
-  value 'EnableCpuQuota' => ''
-  action :remove
-end
-
-windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
-  value 'EnableCpuQuota' => 00000000
-  type :dword
-end
+#windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
+#  value 'EnableCpuQuota' => 00000000
+#  type :dword
+#end
 
 
 # set errormode
@@ -113,14 +108,15 @@ windows_registry 'HKLM\SOFTWARE\Microsoft\Windows\Currentversion\NetCache' do
 end
 
 # set Enable boot optimization
-windows_registry 'HKLM\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction' do
-  values 'Enable' => 'N'
-end
+#windows_registry 'HKLM\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction' do
+#  values 'Enable' => 'N'
+#end
+
 # set EnableAutoLayout
-windows_registry 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout' do
-  values 'EnableAutoLayout' => 00000000
-  type :dword
-end
+#windows_registry 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout' do
+#  values 'EnableAutoLayout' => 00000000
+#  type :dword
+#end
 
 # Set EnableOffload
 windows_registry 'HKLM\SYSTEM\CurrentControlSet\Services\BNNS\Parameters' do
