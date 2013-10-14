@@ -25,10 +25,15 @@ end
 
 # disable dfss
 windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
+  value 'EnableCpuQuota' => ''
+  action :remove
+end
+
+windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
   value 'EnableCpuQuota' => 00000000
   type :dword
-  action :force_modify
 end
+
 
 # set errormode
 windows_registry 'HKLM\System\CurrentControlSet\Control\Windows' do
