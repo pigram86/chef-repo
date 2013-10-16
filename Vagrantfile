@@ -17,6 +17,8 @@ Vagrant.configure("2") do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
 
+  config.omnibus.chef_version = :latest
+
   # This can be set to the host name you wish the guest machine to have. Vagrant
   # will automatically execute the configuration necessary to make this happen.
   config.vm.hostname = "toddpigram-starter"
@@ -75,8 +77,8 @@ Vagrant.configure("2") do |config|
   # and the path to the validation key (relative to this Vagrantfile).
   #
   config.vm.provision :chef_client do |chef|
-     chef.chef_server_url = "https://api.opscode.com/organizations/anyplacecloud"
-     chef.validation_client_name = "anyplacecloud-validator"
-     chef.validation_key_path = ".chef/anyplacecloud-validator.pem"
+     chef.chef_server_url = "https://api.opscode.com/organizations/anyplacecloud2"
+     chef.validation_client_name = "anyplacecloud2-validator"
+     chef.validation_key_path = ".chef/anyplacecloud2-validator.pem"
   end
 end
