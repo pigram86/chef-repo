@@ -33,4 +33,4 @@ metadata
 # Especially for local development, it's helpful to use a local path location.
 # Uncomment to point at a local cookbook on the filesystem, relative to the
 # current working directory.
-cookbook "my_cookbook", :path => "cookbooks/my_cookbook"
+# cookbook "myserver", :path => "/code/myserver-cookbook"

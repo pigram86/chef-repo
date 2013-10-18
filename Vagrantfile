@@ -19,6 +19,8 @@ Vagrant.configure("2") do |config|
 
   config.omnibus.chef_version = :latest
 
+  config.berkshelf.enabled = true
+
   # This can be set to the host name you wish the guest machine to have. Vagrant
   # will automatically execute the configuration necessary to make this happen.
   config.vm.hostname = "toddpigram-starter"
