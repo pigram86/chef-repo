@@ -19,11 +19,7 @@ powershell "DefaultServer" do
   EOH
 end
 
-# if feature installs, schedule a reboot at end of chef run
-windows_reboot 60 do
-  reason 'cause chef said so'
-  action :nothing
-end 
+
 
 # Install RDS
 powershell "RDS" do
@@ -31,14 +27,9 @@ powershell "RDS" do
   Import-Module ServerManager
   Add-WindowsFeature RDS-RD-Server
   EOH
-  notifies :immediately, 'windows_reboot[60]'
+  not_if {reboot_pending?}
 end
 
-# if feature installs, schedule a reboot
-windows_reboot 60 do
-  reason 'cause chef said so'
-  action :nothing
-end 
 
 # Install desktop experience
 powershell "desktop_experience" do
@@ -46,7 +37,7 @@ powershell "desktop_experience" do
   Import-Module ServerManager
   Add-WindowsFeature Desktop-Experience
   EOH
-  notifies :immediately, 'windows_reboot[60]'
+  not_if {reboot_pending?}
 end
 
 # install 7zip
@@ -84,3 +75,9 @@ windows_package "Office 2013 Pro Plus x64" do
   source "//ghhub01.mcpc.com/repo/SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297/setup.exe"
   action :install
 end
+
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  only_if {reboot_pending?}
+end 
