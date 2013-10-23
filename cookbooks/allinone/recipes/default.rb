@@ -80,7 +80,7 @@ end
 #windows_package "Office 2013 Pro Plus x64" do
 #  source "//ghhub01.mcpc.com/repo/SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297/setup.exe"
 #  action :install
-end
+#end
 
 # if feature installs, schedule a reboot at end of chef run
 windows_reboot 60 do

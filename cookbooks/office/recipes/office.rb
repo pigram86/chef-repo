@@ -20,4 +20,11 @@
 windows_package "setup.exe" do
   source '//ghhub01.mcpc.com/repo/SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297/setup.exe'
   action :install
+  not_if {reboot_pending?}
+end
+
+# reboot if needed
+windows_reboot 60 do
+  reason 'Cause Chef said so'
+  only_if {reboot_pending?}
 end
