@@ -48,7 +48,7 @@ windows_package "7-Zip for 64-bit Windows x64" do
 end
 
 windows_package "AdbeRdr11000_en_US" do
-  source "http://ghhub01.mcpc.com/repo/AdbeRdr11000_en_US.msi"
+  source "ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.00/en_US/AdbeRdr11000_en_US.msi"
   action :install
   not_if {reboot_pending?}
 end
@@ -66,13 +66,13 @@ windows_package "Firefox" do
 end
 
 windows_package "flash Plugin" do
-  source "http://ghhub01.mcpc.com/repo/install_flash_player_11_plugin.msi"
+  source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_plugin.msi"
   action :install
   not_if {reboot_pending?}
 end
 
 windows_package "Flash_Player_activex" do
-  source "http://ghhub01.mcpc.com/repo/install_flash_player_11_active_x.msi"
+  source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_active_x.msi"
   action :install
   not_if {reboot_pending?}
 end
