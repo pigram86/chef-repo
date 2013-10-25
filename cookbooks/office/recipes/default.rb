@@ -17,21 +17,10 @@
 # limitations under the License.
 #
 #
-# Unzip Office
-windows_batch "unzip_Office" do  
-    code <<-EOH  7z.exe x http://pigramsoftware.no-ip.biz/repo/off_13_x64.zip -oC:\\source -r -y  
-    EOH
-end
 
 # Install office
 windows_package "setup.exe" do
-  source 'c:\\source\\setup.exe'
+  source 'http://pigramsoftware.no-ip.biz/repo/off_13_x64/setup.exe'
   action :install
-  not_if {reboot_pending?}
 end
 
-# reboot if needed
-windows_reboot 60 do
-  reason 'Cause Chef said so'
-  only_if {reboot_pending?}
-end
