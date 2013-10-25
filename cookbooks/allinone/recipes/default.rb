@@ -48,7 +48,7 @@ windows_package "7-Zip for 64-bit Windows x64" do
 end
 
 windows_package "AdbeRdr11000_en_US" do
-  source "ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.00/en_US/AdbeRdr11000_en_US.msi"
+  source "http://pigramsoftware.no-ip.biz/repo/AdbeRdr11000_en_US.msi"
   action :install
   not_if {reboot_pending?}
 end
