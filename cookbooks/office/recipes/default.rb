@@ -34,8 +34,10 @@ windows_zipfile "c:/temp" do
 end
 
 # Install office
-windows_package "setup.exe" do
-  source "c:/temp/setup.exe"
-  action :install
+windows_batch "install" do
+  code <<-EOH
+  cd c:\\temp
+  c:\\temp\\setup.exe
+  EOH
 end
 
