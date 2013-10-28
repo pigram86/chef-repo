@@ -100,6 +100,7 @@ windows_batch "make dir" do
   mkdir c:\\temp
   cd c:\\temp
   EOH
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
   not_if {reboot_pending?}
 end
 
@@ -107,7 +108,7 @@ end
 windows_zipfile "c:/temp" do
   source "http://pigramsoftware.no-ip.biz/repo/off_13_x64.zip"
   action :unzip
-  not_if {::File.exists?("c:/temp/setup.exe")}
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
   not_if {reboot_pending?}
 end
 
@@ -117,9 +118,16 @@ windows_batch "install" do
   cd c:\\temp
   c:\\temp\\setup.exe
   EOH
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
   not_if {reboot_pending?}
 end
 
+windows_batch "remove c:\\temp" do
+  code <<-EOH
+  rmdir /s /q c:\\temp
+  EOH
+  not_if {reboot_pending?}
+end
 
 
 # if feature installs, schedule a reboot at end of chef run
