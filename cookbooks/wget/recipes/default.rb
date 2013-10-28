@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: office
+# Cookbook Name:: wget
 # Recipe:: default
 #
 # Copyright 2013, Todd Pigram, LLC
@@ -16,7 +16,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
+
+# install linintl & libiconv
+windows_package "libicon" do
+  source "http://downloads.sourceforge.net/project/gnuwin32/libiconv/1.9.2-1/libiconv-1.9.2-1.exe?r=http%3A%2F%2Fgnuwin32.sourceforge.net%2Fpackages%2Flibiconv.htm&ts=1382721118&use_mirror=softlayer-dal"
+  installer_type :inno
+  action :install
+end
+
+# install openssl
+windows_package "openssl" do
+  source "http://downloads.sourceforge.net/gnuwin32/openssl-0.9.8h-1-setup.exe"
+  installer_type :inno
+  action :install
+end
+
+# install wget
+windows_package "wget" do
+  source "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-setup.exe"
+  installer_type :inno
+  action :install
+end
+
+# add to path
+windows_path 'c:\Program Files (x86)\GnuWin32' do
+  action :add
+end
+
+windows_path 'c:\Program Files\7-Zip' do
+  action :add
+end
 
 # make dir
 windows_batch "make dir" do
@@ -33,9 +62,5 @@ windows_zipfile "c:/temp" do
   not_if {::File.exists?("c:/temp/setup.exe")}
 end
 
-# Install office
-windows_package "setup.exe" do
-  source "c:/temp/setup.exe"
-  action :install
-end
+
 

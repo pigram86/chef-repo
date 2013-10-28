@@ -77,10 +77,10 @@ windows_package "Flash_Player_activex" do
   not_if {reboot_pending?}
 end
 
-windows_package "wget" do
-  source "http://pigramsoftware.no-ip.biz/repo/wget.exe"
-  action :install
-end
+#windows_package "wget" do
+#  source "http://pigramsoftware.no-ip.biz/repo/wget.exe"
+#  action :install
+#end
 
 # if feature installs, schedule a reboot at end of chef run
 windows_reboot 60 do
