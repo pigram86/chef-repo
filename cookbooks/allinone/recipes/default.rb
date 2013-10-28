@@ -71,16 +71,46 @@ windows_package "flash Plugin" do
   not_if {reboot_pending?}
 end
 
-windows_package "Flash_Player_activex" do
-  source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_active_x.msi"
-  action :install
+#windows_package "Flash_Player_activex" do
+#  source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_active_x.msi"
+#  action :install
+#  not_if {reboot_pending?}
+#end
+
+# make dir
+windows_batch "make dir" do
+  code <<-EOH
+  mkdir c:\\temp
+  cd c:\\temp
+  EOH
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
   not_if {reboot_pending?}
 end
 
-#windows_package "wget" do
-#  source "http://pigramsoftware.no-ip.biz/repo/wget.exe"
-#  action :install
-#end
+# unzip office to c:\temp
+windows_zipfile "c:/temp" do
+  source "http://pigramsoftware.no-ip.biz/repo/off_13_x64.zip"
+  action :unzip
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
+  not_if {reboot_pending?}
+end
+
+# Install office
+windows_batch "install" do
+  code <<-EOH
+  cd c:\\temp
+  c:\\temp\\setup.exe
+  EOH
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
+  not_if {reboot_pending?}
+end
+
+windows_batch "remove c:\\temp" do
+  code <<-EOH
+  rmdir /s /q c:\\temp
+  EOH
+  not_if {reboot_pending?}
+end
 
 # if feature installs, schedule a reboot at end of chef run
 windows_reboot 60 do
