@@ -126,6 +126,7 @@ windows_batch "remove c:\\temp" do
   code <<-EOH
   rmdir /s /q c:\\temp
   EOH
+  not_if {::File.exists?("C:/Program Files/Microsoft Office/Office15/WINWORD.exe")}
   not_if {reboot_pending?}
 end
 

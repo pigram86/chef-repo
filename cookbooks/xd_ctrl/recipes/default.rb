@@ -16,3 +16,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# install XD7.1 controller with SQL Express
+windows_batch "c:/xd" do
+  code <<-EOH
+  mkdir c:\\xd
+  EOH
+  not_if {::File.exists?("c:/xd")}
+end
+
+windows_zipfile "c:/xd" do
+  source "http://10.160.164.34/repo/x64.zip"
+  action :unzip
+  not_if {::File.exists?("c:/xd")}
+end
+
+windows_batch "XD7 CRTL" do
+  code <<-EOH
+  cd c:\\xd
+  c:\\xd\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL
+  EOH
+  not_if {reboot_pending?}
+end
+
+#windows_package "XenDesktop" do
+#  source "c:/xd/x64/XenDesktopSetup/XenDesktopServerSetup.exe"
+#  options "/quiet /components controller /configure_firewall"
+#  installer_type :custom
+#  action :install
+#end
+
+
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  only_if {reboot_pending?}
+end 
