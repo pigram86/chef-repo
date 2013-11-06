@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: apps
+# Cookbook Name:: apps::flash
 # Recipe:: flash
 #
 # # Copyright 2013, Todd Pigram, LLC
@@ -18,7 +18,14 @@
 #
 
 # install flash plugin
-windows_package "flash Plugin" do
-  source "http://ghhub01.mcpc.com/repo/install_flash_player_11_plugin.msi"
+indows_package "flash Plugin" do
+  source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_plugin.msi"
   action :install
+  not_if {reboot_pending?}
 end
+
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  only_if {reboot_pending?}
+end 

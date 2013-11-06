@@ -21,4 +21,5 @@
 windows_package "7-Zip for 64-bit Windows x64" do
   source "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi"
   action :install
+  not_if {reboot_pending?}
 end

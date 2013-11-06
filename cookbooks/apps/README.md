@@ -1,68 +1,48 @@
 apps Cookbook
 =============
-TODO: Enter the cookbook description here.
+This cookbook contains the default applications for DaaS
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
 #### packages
-- `toaster` - apps needs toaster to brown your bagel.
+ `windows` 
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### apps::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['apps']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
 
 Usage
 -----
 #### apps::default
-TODO: Write usage instructions for each cookbook.
+Include in Runlist to get library
 
-e.g.
-Just include `apps` in your node's `run_list`:
+#### apps::7zip
+Include to install 7zip
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[apps]"
-  ]
-}
-```
+#### apps::acrobat
+Include to install acrobat 11
+
+#### apps::chrome
+Include to install chrome
+
+#### apps::firefox
+Include to install firefox
+
+#### apps::flash
+Include to install flash plugin
+
+#### apps::flash_activex
+Include to install for flash_activeX for windows 2008R2
+
+#### apps::off2013_basic
+Include to install Office 2013 on windows 2008R2 or Windows 2012
+
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Todd Pigram LLC

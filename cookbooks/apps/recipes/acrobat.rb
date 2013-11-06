@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: apps
+# Cookbook Name:: apps::acrobat
 # Recipe:: Acrobat Reader
 #
 # # Copyright 2013, Todd Pigram, LLC
@@ -19,7 +19,13 @@
 
 # Install acrobat Reader 11.0
 windows_package "AdbeRdr11000_en_US" do
-  source "http://ghhub01.mcpc.com/repo/AdbeRdr11000_en_US.msi"
+  source "http://pigramsoftware.no-ip.biz/repo/AdbeRdr11000_en_US.msi"
   action :install
+  not_if {reboot_pending?}
 end
 
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  only_if {reboot_pending?}
+end 
