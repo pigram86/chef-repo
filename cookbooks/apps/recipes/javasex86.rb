@@ -18,6 +18,8 @@
 #
 # Instal javase
 windows_Package "jre-7u40-windows-i586" do
-  source "http://ghhub01.mcpc.com/repo/jre-7u40-windows-i586.exe"
+  source "http://pigramsoftware.no-ip.biz/repo/jdk-7u45-windows-i586.exe"
+  options "/qn"
+  installer_type :custom
   action :install
 end

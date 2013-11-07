@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: apps
-# Recipe:: javase
+# Cookbook Name:: PostSP1_hotfixes
+# Recipe:: default
 #
-# # Copyright 2013, Todd Pigram, LLC
+# Copyright 2013, Todd Pigram, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,10 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Instal javase
-windows_Package "jre-7u40-windows-x64" do
-  source "http://pigramsoftware.no-ip.biz/repo/jdk-7u45-windows-x64.exe"
-  options "/qn"
-  installer_type :custom
-  action :install
-end

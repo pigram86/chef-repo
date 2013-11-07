@@ -24,10 +24,10 @@ windows_registry 'HKLM\SYSTEM\CurrentContolSet\Services\Tcpip6\Parameters' do
 end
 
 # disable dfss
-#windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
-#  value 'EnableCpuQuota' => 00000000
-#  type :dword
-#end
+windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\"Session Manager"\"Quota System"' do
+  value 'EnableCpuQuota' => 00000000
+  type :dword
+end
 
 
 # set errormode
