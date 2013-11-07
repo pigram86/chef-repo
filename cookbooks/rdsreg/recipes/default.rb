@@ -24,7 +24,8 @@ windows_registry 'HKLM\SYSTEM\CurrentContolSet\Services\Tcpip6\Parameters' do
 end
 
 # disable dfss
-windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\"Session Manager"\"Quota System"' do
+windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Quota System' do
+  action :force_modify
   value 'EnableCpuQuota' => 00000000
   type :dword
 end
