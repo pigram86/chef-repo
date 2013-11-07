@@ -22,4 +22,11 @@ windows_Package "jre-7u40-windows-i586" do
   options "/qn"
   installer_type :custom
   action :install
+  not_if {reboot_pending?}
 end
+
+# if feature installs, schedule a reboot at end of chef run
+windows_reboot 60 do
+  reason 'cause chef said so'
+  only_if {reboot_pending?}
+end 

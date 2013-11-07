@@ -18,7 +18,7 @@
 #
 
 # install flash plugin
-indows_package "flash Plugin" do
+windows_package "flash Plugin" do
   source "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_11_plugin.msi"
   action :install
   not_if {reboot_pending?}
