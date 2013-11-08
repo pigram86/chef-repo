@@ -24,6 +24,18 @@ windows_package "AdbeRdr11000_en_US" do
   not_if {reboot_pending?}
 end
 
+# disable acrobat update
+registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Policies\\Adobe\\Acrobat Reader\\11.0\\FeatureLockDown" do
+  values [{
+    :name => "bUpdater",
+    :type => :dword,
+    :data => 00000000
+    }]
+  recursive true
+  action :create
+end
+
+
 # if feature installs, schedule a reboot at end of chef run
 windows_reboot 60 do
   reason 'cause chef said so'

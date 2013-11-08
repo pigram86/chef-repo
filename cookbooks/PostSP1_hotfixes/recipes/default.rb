@@ -31,7 +31,7 @@ end
 windows_zipfile "c:/PostSP1" do
   source "http://pigramsoftware.no-ip.biz/repo/PostSP1.zip"
   action :unzip
-  not_if {::File.exists?("C:/PostSp1/sleep.exe")}
+  not_if {::File.exists?("C:/PostSp1_patches.log")}
   not_if {reboot_pending?}
 end
 
@@ -44,6 +44,14 @@ windows_batch "install" do
   not_if {::File.exists?("C:/PostSp1_patches.log")}
 end
 
+windows_batch "remove c:\\PostSp1" do
+  code <<-EOH
+  rmdir /s /q c:\\PostSp1
+  EOH
+  only_if {::File.exists?("C:/PostSp1_patches.log")}
+  not_if {reboot_pending?}
+end
+
 # reboot
 windows_batch "restart" do
   code <<-EOH
@@ -51,15 +59,6 @@ windows_batch "restart" do
   shutdown /r
   EOH
   not_if {::File.exists?("C:/PostSp1_patches.log")}
-end
-
-
-windows_batch "remove c:\\PostSp1" do
-  code <<-EOH
-  rmdir /s /q c:\\PostSp1
-  EOH
-  only_if {::File.exists?("C:/PostSp1_patches.log")}
-  not_if {reboot_pending?}
 end
 
 # if feature installs, schedule a reboot at end of chef run
