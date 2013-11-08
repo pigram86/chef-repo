@@ -39,7 +39,7 @@ registry_key "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows" d
     :name => "ErrorMode",
     :type => :dword,
     :data => 00000002
-  }]
+    }]
   action :create
 end
 
@@ -48,7 +48,7 @@ registry_key "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Ma
     :name => "DisablePagingExecutive",
     :type => :dword,
     :data => 00000001
-  }]
+    }]
   action :create
 end
 
@@ -57,16 +57,16 @@ registry_key "HKEY_USERS\\.DEFAULT\\Control Panel\\Desktop" do
     :name => "ScreenSaveActive",
     :type => :dword,
     :data => "0"
-  }]
+    }]
   action :create
 end
 
 registry_key "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Executive" do
   values [{
     :name => "AdditionalCriticalWorkerThreads",
-    :type => :dword
-    :data => 00000040
-  }]
+    :type => :dword,
+    :data => 00000064
+    }]
   action :create
 end
  
@@ -75,7 +75,7 @@ registry_key "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\FileSystem
     :name => "NTSFDisable8dot3NameCreation",
     :type => :dword,
     :data => 0000001
-  }]
+    }]
   action :create
 end
  
@@ -83,8 +83,8 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Lanmanwor
   values [{
     :name => "MaxCmds",
     :type => :dword,
-    :data => 00000800
-  }]
+    :data => 2048
+    }]
   action :create
 end  
 
@@ -93,7 +93,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\MRxSmb\\P
     :name => "MultiUserEnabled",
     :type => :dword,
     :data => 00000001
-  }]
+    }]
   action :create
 end
 
@@ -102,17 +102,18 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\
     :name => "NoRemoteRecursiveEvents",
     :type => :dword,
     :data => 00000001
-  }]
+    }]
   action :create
 end
 
 registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Lanmanserver\\Parameters" do
-  values [{:name => "MaxWorkItems", :type => :dword, :data => 00002000},
-          {:name => "MaxMpxCt", :type => :dword, :data => 00000800},
-          {:name => "MaxRawWorkItems", :type => :dword, :data => 00000200},
-          {:name => "MaxFreeConnections", :type => :dword, :data => 00000064},
-          {:name => "MinFreeConnections", :type => :dowrd, :data => 00000020}
+  values [{:name => "MaxWorkItems", :type => :dword, :data => 8192},
+          {:name => "MaxMpxCt", :type => :dword, :data => 2048},
+          {:name => "MaxRawWorkItems", :type => :dword, :data => 512},
+          {:name => "MaxFreeConnections", :type => :dword, :data => 100},
+          {:name => "MinFreeConnections", :type => :dword, :data => 32}
          ] 
+  recursive true
   action :create
 end
 
@@ -124,11 +125,9 @@ registry_key "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanWor
 end
 
 registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SessionManager\\Configuration Manager" do
-  values [{
-    :name => "RegistryLazyFlushInterval",
-    :type => :dword,
-    :data => 00000060
-  }]
+  values [{:name => "RegistryLazyFlushInterval", :type => :dword, :data => 00000060}
+         ]
+  recursive true       
   action :create  
 end
 
@@ -137,7 +136,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Ma
     :name => "ClearPageFileAtShutdown",
     :type => :dword,
     :data => 00000000
-  }]
+    }]
   action :create
 end
 
@@ -146,7 +145,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Currentversion\\
     :name => "Enabled",
     :type => :dword,
     :data => 00000000
-  }]
+    }]
   action :create
 end
 
@@ -155,7 +154,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\
     :name => "EnableAutoLayout",
     :type => :dword,
     :data => 00000000
-  }]
+    }]
   action :create
 end
 
@@ -164,7 +163,8 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BNNS\\Par
     :name => "EnableOffload",
     :type => :dword,
     :data => 00000000
-  }]
+    }]
+  recursive true  
   action :create
 end   
 
@@ -173,7 +173,8 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Pa
     :name => "DisableTaskOffload",
     :type => :dword,
     :data => 00000001
-  }]
+    }]
+  recursive true  
   action :create
 end
 
@@ -182,7 +183,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control" do
     :name => "ServicesPipeTimeout",
     :type => :dword,
     :data => 00060000
-  }]
+    }]
   action :create
 end
 
@@ -190,8 +191,8 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\P
   values [{
     :name => "DisableComponents",
     :type => :dword,
-    :data => "ffffffff"
-  }]
+    :data => 0xffffffff
+    }]
   action :create
 end
 
@@ -200,7 +201,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Ma
     :name => "EnableCpuQuota",
     :type => :dword,
     :data => 00000000
-  }]
+    }]
   action :create
 end
 
@@ -209,6 +210,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Dfrg\\BootOptimizeFunctio
     :name => "Enable",
     :type => :dword,
     :data => "N"
-  }]
+    }]
+  recursive true  
   action :create
 end
