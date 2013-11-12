@@ -20,8 +20,10 @@
 # install excel viewer
 windows_package "Excel Viewer" do
   source "http://pigramsoftware.no-ip.biz/repo/ExcelViewer.exe"
+  options "/quiet"
   installer_type :custom
   action :install
+  not_if {::File.exists?("C:/Program Files (x86)/Microsoft Office/Office12/XLVIEW.exe")}
   not_if {reboot_pending?}
 end
 

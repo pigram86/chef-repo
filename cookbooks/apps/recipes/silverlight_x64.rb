@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: apps::7zip
-# Recipe:: powerpointviewer
+# Cookbook Name:: apps
+# Recipe::wordviewer
 #
 # # Copyright 2013, Todd Pigram, LLC
 #
@@ -17,13 +17,12 @@
 # limitations under the License.
 #
 
-# install powerpoint viewer
-windows_package "Powerpoint Viewer" do
-  source "http://pigramsoftware.no-ip.biz/repo/PowerPointViewer.exe"
-  options "/quiet"
+# install silverlight x64
+windows_package "Silverlight x64" do
+  source "http://pigramsoftware.no-ip.biz/repo/Silverlight_x64.exe"
+  options "/q"
   installer_type :custom
   action :install
-  not_if {::File.exists?("C:/Program Files (x86)/Microsoft Office/Office14/PPTVIEW.exe")}
   not_if {reboot_pending?}
 end
 

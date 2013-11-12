@@ -31,15 +31,15 @@ end
 windows_zipfile "c:/PostSP1" do
   source "http://pigramsoftware.no-ip.biz/repo/PostSP1.zip"
   action :unzip
-  not_if {::File.exists?("C:/PostSp1_patches.log")}
+  not_if {::File.exists?("C:/PostSp1/sleep.exe")}
   not_if {reboot_pending?}
 end
 
 # Install office
 windows_batch "install" do
   code <<-EOH
-  For /R c:\\postsp1 %%i IN (*.msu) DO wusa.exe %%i /quiet /notrestart /log:C:\\PostSP1_patches.log
-  
+  cd c:\\PostSp1
+  c:\\postsp1\\installpostsp1.cmd
   EOH
   not_if {::File.exists?("C:/PostSp1_patches.log")}
 end
@@ -50,15 +50,6 @@ windows_batch "remove c:\\PostSp1" do
   EOH
   only_if {::File.exists?("C:/PostSp1_patches.log")}
   not_if {reboot_pending?}
-end
-
-# reboot
-windows_batch "restart" do
-  code <<-EOH
-  cd c:\\windows\\system32
-  shutdown /r
-  EOH
-  not_if {::File.exists?("C:/PostSp1_patches.log")}
 end
 
 # if feature installs, schedule a reboot at end of chef run
