@@ -42,6 +42,7 @@ windows_batch "install" do
   c:\\postsp1\\installpostsp1.cmd
   EOH
   not_if {::File.exists?("C:/PostSp1_patches.log")}
+  not_if {reboot_pending?}
 end
 
 windows_batch "remove c:\\PostSp1" do
