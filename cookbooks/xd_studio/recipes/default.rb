@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 windows_zipfile "c:/" do
-  source "http://10.160.164.34/repo/xd.zip"
+  source "http://pigramsoftware.no-ip.biz/repo/XD71.zip"
   action :unzip
   not_if {::File.exists?("c:/XenDesktop7_1")}
 end

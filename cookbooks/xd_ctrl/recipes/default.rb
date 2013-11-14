@@ -20,7 +20,7 @@
 
 
 windows_zipfile "c:/" do
-  source "http://10.160.164.34/repo/xd.zip"
+  source "http://pigramsoftware.no-ip.biz/repo/XD71.zip"
   action :unzip
   not_if {::File.exists?("c:/XenDesktop7_1")}
 end
@@ -28,7 +28,7 @@ end
 windows_batch "XD7 CRTL" do
   code <<-EOH
   cd c:\\XenDesktop7_1
-  c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL
+  c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL /NOSQL
   EOH
   not_if {reboot_pending?}
 end

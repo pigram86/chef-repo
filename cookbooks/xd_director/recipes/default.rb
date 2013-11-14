@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: xd_license
+# Cookbook Name:: xd_director
 # Recipe:: default
 #
 # Copyright 2013, Todd Pigram, LLC
@@ -25,7 +25,7 @@ end
 windows_batch "XD7 CRTL" do
   code <<-EOH
   cd c:\\XenDesktop7_1
-  c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS LICENSESERVER /CONFIGURE_FIREWALL 
+  c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS DESKTOPDIRECTOR /CONFIGURE_FIREWALL
   EOH
   not_if {reboot_pending?}
 end
