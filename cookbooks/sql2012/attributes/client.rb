@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: sql2012
-# Recipe:: default
+# Attribute:: client
 #
 # Copyright 2013, Todd Pigram, LLC
 #
@@ -16,5 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_recipe 'sql2012::client'
