@@ -23,6 +23,7 @@ windows_zipfile "c:/" do
   source "http://pigramsoftware.no-ip.biz/repo/XD71.zip"
   action :unzip
   not_if {::File.exists?("c:/XenDesktop7_1")}
+  not_if {reboot_pending?}
 end
 
 windows_batch "XD7 CRTL" do
