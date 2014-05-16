@@ -1,16 +1,26 @@
-{
-  "chef": {
-    "chef_server_url": "https://api.opscode.com/organizations/anyplacecloud",
-    "validation_client_name": "anyplacecloud-validator",
-    "validation_key_path": ".chef/anyplacecloud-validator.pem",
-    "client_key": ".chef/toddpigram.pem",
-    "node_name": "toddpigram"
-  },
-  "vagrant": {
-    "vm": {
-      "box": "opscode-ubuntu-12.04-i386",
-      "box_url": "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04-i386_provisionerless.box",
-      "provision": "chef_client"
+{  
+    "chef": {    
+        "chef_server_url": "https://api.opscode.com/organizations/clevcloud",    
+        "validation_client_name": "clevcloud-validator",    
+        "validation_key_path": "/etc/chef/clevcloud-validation.pem",    
+        "client_key": "/Users/reset/.chef/toddpigram.pem",    
+        "node_name": "toddpigram"  
+    },  
+        
+    "vagrant": {    
+        "vm": {      
+            "box": "Berkshelf-CentOS-6.3-x86_64-minimal",      
+            "box_url": "https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box",      
+            "forward_port": {      
+            },      
+            "network": {        
+                "bridged": true,        
+                "hostonly": "33.33.33.10"    
+            },      
+            "provision": "chef_solo"    
+        }  
+    },  
+    "ssl": {    
+        "verify": true  
     }
-  }
 }
